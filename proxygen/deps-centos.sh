@@ -29,6 +29,7 @@ sudo yum install -y \
 	libevent-devel \
 	libevent \
 	snappy \
+    subversion \
 	wget
 
 # Adding support for Ubuntu 12.04.x
@@ -68,7 +69,7 @@ echo "Fetching double-conversion from git (yum failed)"
 	cd ..
 fi
 
-git clone https://github.com/facebook/fbthrift || true
+git clone https://github.com/NotYoCheese/fbthrift.git || true
 cd fbthrift/thrift
 
 # Rebase in case we've already downloaded thrift and folly
@@ -80,7 +81,6 @@ if [ -e folly/folly ]; then
     cd ../..
 fi
 
-cp /home/mnoe/Documents/dev/proxygen.bak/proxygen/fbthrift/thrift/deps-centos.sh .
 # Build folly and fbthrift
 if ! ./deps-centos.sh; then
 	echo "fatal: fbthrift+folly build failed"
